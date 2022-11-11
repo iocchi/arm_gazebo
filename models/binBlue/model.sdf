@@ -1,0 +1,59 @@
+<?xml version="1.0" ?>
+<sdf version='1.6'>
+	<model name='Blue Bin'>
+	<static>1</static>
+	      <link name='link'>
+	        <inertial>
+	          <mass>0.3</mass>
+	          <inertia>
+	            <ixx>0.00055575</ixx>
+	            <ixy>0</ixy>
+	            <ixz>0</ixz>
+	            <iyy>0.00055575</iyy>
+	            <iyz>0</iyz>
+	            <izz>0.0001755</izz>
+	          </inertia>
+	        </inertial>
+	        <collision name='collision'>
+	          <geometry>
+	            <mesh>
+	              <uri>model://binBlue/meshes/recycleBinBlue2.dae</uri>
+			<scale>0.3 0.3 0.24</scale>
+	            </mesh>
+	          </geometry>
+	          <surface>
+	            <friction>
+	              <ode>
+	                <mu>3</mu>
+	                <mu2>3</mu2>
+	              </ode>
+	              <torsional>
+	                <ode/>
+	              </torsional>
+	            </friction>
+	            <contact>
+	              <ode>
+	                <kp>1e+07</kp>
+	                <kd>1</kd>
+	                <min_depth>0.001</min_depth>
+	                <max_vel>0.5</max_vel>
+	              </ode>
+	            </contact>
+	            <bounce/>
+	          </surface>
+	          <max_contacts>10</max_contacts>
+	        </collision>
+	        <visual name='visual'>
+	          <geometry>
+	           	 <mesh>
+	                <uri>model://binBlue/meshes/recycleBinBlue2.dae</uri>
+			<scale>0.3 0.3 0.24</scale>
+	            </mesh>
+	          </geometry>
+	        </visual>
+	        <self_collide>0</self_collide>
+	        <enable_wind>0</enable_wind>
+	        <kinematic>0</kinematic>
+	      </link>
+	    </model>
+</sdf>
