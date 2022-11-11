@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>arm_gazebo</name>
+  <version>0.0.0</version>
+  <description>
+    Gazebo simulation for RoboCup ARM challenge
+  </description>
+
+  <maintainer email="todo@todo.todo">TO DO</maintainer>
+  <author email="todo@todo.todo">TO DO</author>
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <export>
+  </export>
+
+</package>
