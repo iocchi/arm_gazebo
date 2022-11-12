@@ -39,18 +39,18 @@
       </sensor>
     </link>
     <link name="link_led">
-      <pose relative_to='link_scale'>0 -0.125 0.045 0 0 0</pose>
+      <pose relative_to='link_scale'>0 -0.125 0.032 0 0 0</pose>
       <collision name="cled">
         <geometry>
           <box>
-            <size>0.15 0.05 0.01</size>
+            <size>0.15 0.05 0.004</size>
           </box>
         </geometry>
       </collision>
       <visual name="vled">
         <geometry>
           <box>
-            <size>0.15 0.05 0.01</size>
+            <size>0.15 0.05 0.004</size>
           </box>
         </geometry>
         <material>
