@@ -87,6 +87,8 @@ RUN cd /home/robot/lib/libfrankainstall/libfranka/build && \
 
 RUN apt install -y build-essential cmake git libpoco-dev libeigen3-dev
 
+RUN ln -s /usr/bin/python3 /usr/bin/python
+
 USER robot
 
 RUN mkdir -p $HOME/src/ros

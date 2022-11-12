@@ -1,0 +1,45 @@
+version: "2.3"
+services:
+
+  xserver:
+    image: devrt/xserver
+    container_name: xserver
+    ipc: host
+    security_opt:
+      - seccomp:unconfined
+    environment:
+      - DISPLAY=:9
+    ports:
+      - "3000:80"
+
+  gazebo:
+    image: arm_gazebo
+    container_name: gazebo
+    tty: true
+    ipc: host
+    network_mode: "host"
+    privileged: true
+    security_opt:
+      - seccomp:unconfined
+    environment:
+      - DISPLAY=:9
+    volumes_from:
+      - xserver
+    depends_on:
+      - xserver
+    volumes:
+      - $HOME/src/arm_gazebo:/home/robot/src/arm_gazebo
+    working_dir: /home/robot/
+    entrypoint:
+    - bash
+    - -ci 
+    - "cd /home/robot/src/arm_gazebo/bin && ./init_sim_panda.bash"
+
+
+# Test
+# roslaunch franka_gazebo panda.launch x:=-0.5  world:=$(rospack find franka_gazebo)/world/stone.sdf controller:=cartesian_impedance_example_controller rviz:=true
+
+# roslaunch franka_gazebo panda_cam.launch world:=$(rospack find franka_gazebo)/world/FrankaGazebo.sdf controller:=cartesian_impedance_example_controller
+
+
+

@@ -2,8 +2,8 @@
 
 # adapted from https://boschresearch.github.io/pcg_gazebo_pkgs/python_api/pcg_gazebo.simulation/
 
-s
 from __future__ import print_function
+
 
 def get_gazebo_model_folders(dir_path):
     """Return the paths to all Gazebo model folders under the 
