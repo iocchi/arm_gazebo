@@ -33,9 +33,11 @@ This package contains files for Gazebo simulation for RoboCup ARM challenge.
         sudo chmod a+x docker-compose
         docker-compose -v
 
-* For Nvidia drivers, install nvidia-docker2
+* Nvidia driver
 
-        https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html
+Install nvidia-docker2
+
+[NVidia Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html)
 
 
 * Download this repository in `$HOME/src/arm_gazebo`
@@ -67,5 +69,10 @@ Spawn objects
 
     docker exec -it gazebo tmux a
     cd ~/src/arm_gazebo/scripts
-    python3 gazebo_objects.py -a ../config/ARM1.txt
+    python gazebo_objects.py -a ../config/ARM1.txt
+
+For other interactions with gazebo objects, see a list of options with
+
+    python gazebo_objects.py -h
+
 
