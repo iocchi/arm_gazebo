@@ -40,8 +40,6 @@ This package contains files for Gazebo simulation for RoboCup ARM challenge.
     [NVidia Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html)
 
 
-* Download this repository in `$HOME/src/arm_gazebo`
-
 
 # Build
 

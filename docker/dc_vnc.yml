@@ -28,7 +28,7 @@ services:
     depends_on:
       - xserver
     volumes:
-      - $HOME/src/arm_gazebo:/home/robot/src/arm_gazebo
+      - ${ARM_GAZEBO_DIR}:/home/robot/src/arm_gazebo
     working_dir: /home/robot/
     entrypoint:
     - bash
