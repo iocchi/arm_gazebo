@@ -35,9 +35,9 @@ This package contains files for Gazebo simulation for RoboCup ARM challenge.
 
 * Nvidia driver
 
-Install nvidia-docker2
+    Install nvidia-docker2
 
-[NVidia Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html)
+    [NVidia Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html)
 
 
 * Download this repository in `$HOME/src/arm_gazebo`
