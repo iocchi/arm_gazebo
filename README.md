@@ -58,15 +58,19 @@ Build docker image
 
 # Configure and spawn objects
 
-Create a config file in `config` folder
+Create a config file in `config` folder with objects described in this format
 
     <object_name> <type> <x> <y> <z> <yaw> <pitch> <roll>
 
 
-Spawn objects
+Spawn objects from the docker container
 
     docker exec -it gazebo tmux a
     cd ~/src/arm_gazebo/scripts
+    python gazebo_objects.py -a <object config file>
+
+For example:
+
     python gazebo_objects.py -a ../config/ARM1.txt
 
 For other interactions with gazebo objects, see a list of options with
