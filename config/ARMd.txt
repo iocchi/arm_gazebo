@@ -1,0 +1,12 @@
+wc*
+box*
+scale*
+pouch*
+rCan*
+gCan*
+yCan*
+rBottle*
+bBottle*
+yBottle*
+hammer*
+

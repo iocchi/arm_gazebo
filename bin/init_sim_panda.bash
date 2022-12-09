@@ -22,7 +22,7 @@ tmux send-keys -t $SESSION:2 "rosrun rviz rviz -d moveit.rviz"
 
 tmux new-window -t $SESSION:3 -n 'scripts'
 tmux send-keys -t $SESSION:3 "roscd arm_gazebo/scripts" C-m
-tmux send-keys -t $SESSION:3 "python gazebo_objects.py -a ../config/ARM1.txt" C-m
+tmux send-keys -t $SESSION:3 "python gazebo_objects.py -a ../config/ARM0.txt" C-m
 
 while [ 1 ]; do
   sleep 60

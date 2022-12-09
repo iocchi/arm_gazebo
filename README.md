@@ -55,6 +55,31 @@ Build docker image
 
 `x11` default mode uses X11 server, `nvidia` if you have NVidia graphic card and you installed nvidia-docker, `vnc` if you have problems with other modes uses a virtual xserver accessible through a web browser at `http://localhost:3000/`
 
+## Explanation of the startup procedure
+
+The script `run.bash` use `docker-compose` to start the docker containers with the configuration given in the files `docker/dc_<*>.yml`
+
+To see the running docker containers, use the command
+
+    docker ps
+
+The container `gazebo` is the one that is running the ARM gazebo simulation
+
+The container is running a [tmux](https://github.com/tmux/tmux/wiki) session. You can attach to this session with the following command
+
+    docker exec -it gazebo tmux a
+
+The container initialize the gazebo simulation by running the script `bin/init_sim_panda.bash`.
+In this script you can find the commands sent to the tmux server, in particular the following windows are created: 0) gazebo simulator, 1) moveit, 2) rviz (command prepared but not launched),
+3) scripts to spawn objects.
+
+Note: you can create additional tmux windows with `CTRL-b c`. You can detach from tmux
+with `CTRL-b d`
+
+
+
+
+
 
 # Configure and spawn objects
 
@@ -65,7 +90,12 @@ Create a config file in `config` folder with objects described in this format
 
 Spawn objects from the docker container
 
+First enter the docker container
+
     docker exec -it gazebo tmux a
+
+Then, issue the follwoing commands to manage objects in gazebo simulator
+
     cd ~/src/arm_gazebo/scripts
     python gazebo_objects.py -a <object config file>
 
@@ -73,8 +103,37 @@ For example:
 
     python gazebo_objects.py -a ../config/ARM1.txt
 
+You can add more config files in the `config` folder
+
+To reset a world, you can use the script
+
+    ./reset_world.bash <object config file>
+
+This script will first delete all the objects according to the patterns
+in file `config/ARMd.txt` and then spawn the new objects in the specified
+config file.
+
+For example, this command will reset the world with the configuration `ARM1.txt`
+
+    ./reset_world.bash ../config/ARM1.txt
+
 For other interactions with gazebo objects, see a list of options with
 
     python gazebo_objects.py -h
+
+    Options
+    -h	help
+    -l	list objects
+    -m	list available models
+    -a <obj>  <type> <x> <y> <z> <yaw> <pitch> <roll>|<filename>	add an object or all objects in config file
+    -d <obj>|<filename>	delete one object or all objects in config file
+    -w	world properties
+    -s <obj>	object properties and state
+
+# Troubleshooting
+
+* In case of errors due to existing containers, use this command to clean them
+
+        docker container prune -f
 
 
