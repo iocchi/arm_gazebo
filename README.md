@@ -40,6 +40,11 @@ This package contains files for Gazebo simulation for RoboCup ARM challenge.
     [NVidia Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html)
 
 
+* Additional Tools
+
+        sudo apt install gawk
+
+
 
 # Build
 
@@ -63,11 +68,11 @@ To see the running docker containers, use the command
 
     docker ps
 
-The container `gazebo` is the one that is running the ARM gazebo simulation
+The container `armgazebo` is the one that is running the ARM gazebo simulation
 
 The container is running a [tmux](https://github.com/tmux/tmux/wiki) session. You can attach to this session with the following command
 
-    docker exec -it gazebo tmux a
+    docker exec -it armgazebo tmux a
 
 The container initialize the gazebo simulation by running the script `bin/init_sim_panda.bash`.
 In this script you can find the commands sent to the tmux server, in particular the following windows are created: 0) gazebo simulator, 1) moveit, 2) rviz (command prepared but not launched),
@@ -92,7 +97,7 @@ Spawn objects from the docker container
 
 First enter the docker container
 
-    docker exec -it gazebo tmux a
+    docker exec -it armgazebo tmux a
 
 Then, issue the follwoing commands to manage objects in gazebo simulator
 

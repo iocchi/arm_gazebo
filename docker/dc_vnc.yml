@@ -14,7 +14,7 @@ services:
 
   gazebo:
     image: arm_gazebo
-    container_name: gazebo
+    container_name: armgazebo
     tty: true
     ipc: host
     network_mode: "host"

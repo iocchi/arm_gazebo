@@ -13,7 +13,7 @@ ARG GID=1000
 RUN apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
 
 RUN apt-get update && \
-    apt-get install -y tmux less sudo nano xterm git \
+    apt-get install -y apt-utils tmux less sudo nano xterm git \
         mesa-utils libgl1-mesa-glx \
         ros-noetic-gazebo-ros-pkgs ros-noetic-gazebo-ros-control \
         ros-noetic-moveit ros-noetic-tf-conversions \
