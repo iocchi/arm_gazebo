@@ -50,7 +50,7 @@
   </include>
 
   <param name="robot_description"
-         command="xacro $(find franka_description)/robots/panda/panda.urdf.xacro
+         command="xacro $(find arm_gazebo)/launch/panda_camera.urdf.xacro
                   gazebo:=true
                   hand:=$(arg use_gripper)
                   arm_id:=$(arg arm_id)
