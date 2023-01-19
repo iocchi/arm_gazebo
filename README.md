@@ -135,6 +135,20 @@ For other interactions with gazebo objects, see a list of options with
     -w	world properties
     -s <obj>	object properties and state
 
+
+# Rviz visualization
+
+From the docker container
+
+    docker exec -it armgazebo tmux a
+
+you can create a new tmux windows with `CTRL-b c` and then run
+
+    cd ~/src/arm_gazebo/config
+    rosrun rviz rviz -d robot_camera.rviz
+
+You can detach from tmux with `CTRL-b d`
+
 # Troubleshooting
 
 * In case of errors due to existing containers, use this command to clean them
