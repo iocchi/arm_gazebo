@@ -4,6 +4,8 @@ This package contains files for Gazebo simulation for RoboCup ARM challenge.
 
 # Setup
 
+Note: Skip this section if you downloaded the ARM Gazebo Virtual Machine.
+
 * Install docker engine (not docker Desktop!!!)  (tested on v. 19.03, 20.10) 
 
     Usually, this should work
@@ -48,6 +50,8 @@ This package contains files for Gazebo simulation for RoboCup ARM challenge.
 
 # Build
 
+Note: Skip this section if you downloaded the ARM Gazebo Virtual Machine.
+
 Build docker image
 
     cd docker
@@ -59,6 +63,9 @@ Build docker image
     ./run.bash [x11|nvidia|vnc]
 
 `x11` default mode uses X11 server, `nvidia` if you have NVidia graphic card and you installed nvidia-docker, `vnc` if you have problems with other modes uses a virtual xserver accessible through a web browser at `http://localhost:3000/`
+
+Note: if you are using the ARM Gazebo Virtual Machine, run in standard mode `./run.bash`
+
 
 ## Explanation of the startup procedure
 
@@ -130,7 +137,7 @@ For other interactions with gazebo objects, see a list of options with
     -h	help
     -l	list objects
     -m	list available models
-    -a <obj>  <type> <x> <y> <z> <yaw> <pitch> <roll>|<filename>	add an object or all objects in config file
+    -a <obj> <type> <x> <y> <z> <yaw> <pitch> <roll>|<filename>	add an object or all objects in config file
     -d <obj>|<filename>	delete one object or all objects in config file
     -w	world properties
     -s <obj>	object properties and state
