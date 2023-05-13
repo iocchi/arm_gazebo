@@ -104,6 +104,16 @@ RUN cd $HOME/ros/catkin_ws/src && \
     ln -s $HOME/src/ros/panda_moveit_config . 
 
 
+# grasp fix
+
+RUN cd $HOME/src/ros && \
+    git clone https://github.com/JenniferBuehler/general-message-pkgs.git && \
+    git clone https://github.com/JenniferBuehler/gazebo-pkgs.git 
+
+RUN cd $HOME/ros/catkin_ws/src && \
+    ln -s $HOME/src/ros/general-message-pkgs . && \
+    ln -s $HOME/src/ros/gazebo-pkgs . 
+
 
 # === ros install and catkin make ===
 
