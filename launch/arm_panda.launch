@@ -49,8 +49,10 @@
     <arg name="use_sim_time" value="true"/>
   </include>
 
+<!--         command="xacro $(find arm_gazebo)/launch/panda_camera.urdf.xacro  -->
+
   <param name="robot_description"
-         command="xacro $(find arm_gazebo)/launch/panda_camera.urdf.xacro
+         command="xacro $(find arm_gazebo)/launch/urdf/panda_camera.urdf.xacro
                   gazebo:=true
                   hand:=$(arg use_gripper)
                   arm_id:=$(arg arm_id)
