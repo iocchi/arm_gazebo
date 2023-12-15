@@ -33,13 +33,7 @@ services:
     entrypoint:
     - bash
     - -ci 
-    - "cd /home/robot/src/arm_gazebo/bin && ./init_sim_panda.bash"
-
-
-# Test
-# roslaunch franka_gazebo panda.launch x:=-0.5  world:=$(rospack find franka_gazebo)/world/stone.sdf controller:=cartesian_impedance_example_controller rviz:=true
-
-# roslaunch franka_gazebo panda_cam.launch world:=$(rospack find franka_gazebo)/world/FrankaGazebo.sdf controller:=cartesian_impedance_example_controller
+    - "cd /home/robot/src/arm_gazebo/bin && ./init_sim.bash"
 
 
 

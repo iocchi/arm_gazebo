@@ -27,7 +27,7 @@
   </node>
 
   <!-- Start the 'driver' (ie: Gazebo in this case) -->
-  <include file="$(dirname)/ur_2f85_control.launch.xml">
+  <include file="$(dirname)/ur5e_2f85_control.launch.xml">
     <arg name="controller_config_file" value="$(arg controller_config_file)"/>
     <arg name="controllers" value="$(arg controllers)"/>
     <arg name="gazebo_world" value="$(arg world)"/>
