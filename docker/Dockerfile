@@ -13,7 +13,9 @@ ARG GID=1000
 RUN apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
 
 RUN apt-get update && \
-    apt-get install -y apt-utils tmux less sudo nano xterm git \
+    apt-get install -y --no-install-recommends \
+        build-essential cmake git libpoco-dev libeigen3-dev \
+        apt-utils tmux less sudo nano xterm git \
         mesa-utils libgl1-mesa-glx \
         ros-noetic-gazebo-ros-pkgs ros-noetic-gazebo-ros-control \
         ros-noetic-moveit ros-noetic-tf-conversions \
@@ -21,8 +23,8 @@ RUN apt-get update && \
         ros-noetic-joint-trajectory-controller ros-noetic-joint-state-controller \
         ros-noetic-gripper-action-controller ros-noetic-position-controllers
 
+RUN ln -s /usr/bin/python3 /usr/bin/python
 
-# python-pathlib 
 
 # User: robot (password: robot) with sudo power
 
@@ -47,7 +49,6 @@ RUN touch ~/.sudo_as_admin_successful
 RUN mkdir -p $HOME/ros/catkin_ws/src
 
 RUN /bin/bash -c "source /opt/ros/noetic/setup.bash && cd $HOME/ros/catkin_ws/src && catkin_init_workspace && cd .. && catkin_make"
-
 
 
 # Set up .bashrc
@@ -85,10 +86,6 @@ USER root
 RUN cd /home/robot/lib/libfrankainstall/libfranka/build && \
     make install 
 
-RUN apt install -y build-essential cmake git libpoco-dev libeigen3-dev
-
-RUN ln -s /usr/bin/python3 /usr/bin/python
-
 USER robot
 
 RUN mkdir -p $HOME/src/ros
@@ -104,7 +101,7 @@ RUN cd $HOME/ros/catkin_ws/src && \
     ln -s $HOME/src/ros/panda_moveit_config . 
 
 
-# grasp fix
+# === grasp fix ===
 
 RUN cd $HOME/src/ros && \
     git clone https://github.com/JenniferBuehler/general-message-pkgs.git && \
@@ -115,7 +112,24 @@ RUN cd $HOME/ros/catkin_ws/src && \
     ln -s $HOME/src/ros/gazebo-pkgs . 
 
 
-# === ros install and catkin make ===
+
+# === Universal robots arm and robotiq gripper ===
+
+RUN cd ~/src/ros/ && \
+    git clone -b noetic-devel https://github.com/ros-industrial/universal_robot.git && \
+    git clone https://github.com/filesmuggler/robotiq.git
+
+# Patch robotiq_85_gripper.transmission.xacro
+COPY patches/robotiq_85_gripper.transmission.xacro /tmp
+RUN cp /tmp/robotiq_85_gripper.transmission.xacro $HOME/src/ros/robotiq/robotiq_description/urdf/
+
+RUN cd $HOME/ros/catkin_ws/src && \
+    ln -s $HOME/src/ros/universal_robot . && \
+    ln -s $HOME/src/ros/robotiq . 
+
+
+
+# === ros install and make ===
 
 USER robot
 
@@ -124,24 +138,16 @@ RUN cd /home/robot/ros/catkin_ws && \
 
 USER root
 
-#from franka instructions...
-#rosdep install --from-paths src --ignore-src -r -y
-#rosdep install --from-paths src --ignore-src --rosdistro noetic
-
 RUN cd /home/robot/ros/catkin_ws && \
+    apt update && \
     rosdep install --from-paths src --ignore-src --rosdistro=noetic -y -r
-# -r Continue installing despite errors.
-
-#    apt-get clean && \
-#    rm -rf /var/lib/apt/lists/*
-
 
 USER robot
 
-# RUN /bin/bash -ci "cd $HOME/ros/catkin_ws; catkin_make"
+RUN /bin/bash -ci "cd $HOME/ros/catkin_ws; catkin_make"
 
 
-### Add arm_gazebo repository
+# === arm_gazebo repository ===
 
 RUN cd ~/src && \
     git clone https://github.com/iocchi/arm_gazebo.git
@@ -150,6 +156,7 @@ RUN cd $HOME/ros/catkin_ws/src && \
     ln -s $HOME/src/arm_gazebo . 
 
 RUN /bin/bash -ci "cd $HOME/ros/catkin_ws; catkin_make"
+
 
 # === Set working dir and container command ===
 
