@@ -34,7 +34,13 @@
     </inertial>
   </link>
 
-
+  <!-- camera_depth_link -->
+  <link name="camera_depth_link" />
+  <joint name="camera_depth_module" type="fixed">
+    <origin xyz="0 0 0" rpy="-1.57 0 -1.57" />
+    <parent link="camera_link" />
+    <child  link="camera_depth_link" />
+  </joint>
 
   <gazebo reference="camera_link"> <!-- your_camera_link -->
     <sensor type="depth" name="camera">       
@@ -45,7 +51,7 @@
           <image>
               <width>640</width>
               <height>480</height>
-              <format>R8G8B8</format>
+              <format>B8G8R8</format>
           </image>
           <depth_camera>
 
@@ -60,7 +66,7 @@
           <alwaysOn>true</alwaysOn>
               <updateRate>10.0</updateRate>
               <cameraName>camera</cameraName>
-              <frameName>camera_link</frameName>                   
+              <frameName>camera_depth_link</frameName>                   
           <imageTopicName>rgb/image_raw</imageTopicName>
           <depthImageTopicName>depth/image_raw</depthImageTopicName>
           <pointCloudTopicName>depth/points</pointCloudTopicName>

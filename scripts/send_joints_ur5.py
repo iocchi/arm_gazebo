@@ -76,7 +76,6 @@ def main():
         rate.sleep()
 
         d = diff(current_joints, target_joints)
-        print(d)
 
 
 if __name__ == '__main__':
