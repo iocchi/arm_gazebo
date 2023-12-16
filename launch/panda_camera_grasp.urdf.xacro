@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="panda">
+
+  <xacro:include filename="$(find franka_description)/robots/common/franka_robot.xacro"/>
+
+  <xacro:arg name="arm_id" default="panda" />
+
+  <xacro:franka_robot arm_id="$(arg arm_id)"
+                      joint_limits="${xacro.load_yaml('$(find franka_description)/robots/panda/joint_limits.yaml')}">
+  </xacro:franka_robot>
+
+
+
+  <!-- camera_link -->
+  <link name="camera_link"/>
+  <joint name="camera_joint" type="fixed">
+    <origin xyz="0.05 0 0" rpy="-${pi} -${pi/2.0} 0"/>
+    <parent link="panda_hand"/>
+    <child link="camera_link"/>
+  </joint>
+
+  <gazebo reference="camera_link"> <!-- your_camera_link -->
+    <sensor type="depth" name="camera">       
+      <always_on>true</always_on>
+      <visualize>true</visualize>             
+      <camera>
+          <horizontal_fov>1.047</horizontal_fov>
+          <image>
+              <width>640</width>
+              <height>480</height>
+              <format>R8G8B8</format>
+          </image>
+          <depth_camera>
+
+          </depth_camera>
+          <clip>
+              <near>0.1</near>
+              <far>100</far>
+          </clip>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_openni_kinect.so">
+          <baseline>0.2</baseline>
+          <alwaysOn>true</alwaysOn>
+          <updateRate>0.0</updateRate>
+          <cameraName>camera</cameraName>
+          <frameName>camera_link</frameName>                   
+          <imageTopicName>rgb/image_raw</imageTopicName>
+          <depthImageTopicName>depth/image_raw</depthImageTopicName>
+          <pointCloudTopicName>depth/points</pointCloudTopicName>
+          <cameraInfoTopicName>rgb/camera_info</cameraInfoTopicName>              
+          <depthImageCameraInfoTopicName>depth/camera_info</depthImageCameraInfoTopicName>            
+          <pointCloudCutoff>0.4</pointCloudCutoff>                
+              <hackBaseline>0.07</hackBaseline>
+              <distortionK1>0.0</distortionK1>
+              <distortionK2>0.0</distortionK2>
+              <distortionK3>0.0</distortionK3>
+              <distortionT1>0.0</distortionT1>
+              <distortionT2>0.0</distortionT2>
+          <CxPrime>0.0</CxPrime>
+          <Cx>0.0</Cx>
+          <Cy>0.0</Cy>
+          <focalLength>0.0</focalLength>
+          </plugin>
+    </sensor>
+  </gazebo>
+  
+    <!-- Gazebo grasping plugin -->
+    <gazebo>
+      <gripper name="gazebo_gripper">
+        <grasp_check>
+          <attach_steps>2</attach_steps>    <!-- default: 20 -->
+          <detach_steps>2</detach_steps>    <!-- default: 40 -->
+          <min_contact_count>3</min_contact_count>
+        </grasp_check>
+        <gripper_link>panda_left_finger</gripper_link>
+        <gripper_link>panda_right_finger</gripper_link>
+        <palm_link>panda_link7</palm_link>
+      </gripper>
+    </gazebo>
+		
+   <!-- Gazebo grasp fix -->
+   <gazebo>
+   <plugin name="gazebo_grasp_fix" filename="libgazebo_grasp_fix.so">
+        <arm>
+          <arm_name>panda</arm_name>
+          <palm_link>panda_link7</palm_link>
+          <gripper_link>panda_left_finger</gripper_link>
+          <gripper_link>panda_right_finger</gripper_link>
+        </arm>
+       <forces_angle_tolerance>120</forces_angle_tolerance>
+       <update_rate>4</update_rate>
+       <grip_count_threshold>2</grip_count_threshold>
+       <max_grip_count>8</max_grip_count>
+       <release_tolerance>0.01</release_tolerance>
+       <disable_collisions_on_attach>false</disable_collisions_on_attach>
+       <contact_topic>__default_topic__</contact_topic>
+    </plugin>
+  </gazebo>
+
+
+</robot>

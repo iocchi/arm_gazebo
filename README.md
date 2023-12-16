@@ -81,12 +81,11 @@ The container is running a [tmux](https://github.com/tmux/tmux/wiki) session. Yo
 
     docker exec -it armgazebo tmux a
 
-The container initialize the gazebo simulation by running the script `bin/init_sim_panda.bash`.
+The container initialize the gazebo simulation by running the script `bin/init_sim.bash`.
 In this script you can find the commands sent to the tmux server, in particular the following windows are created: 0) gazebo simulator, 1) moveit, 2) rviz (command prepared but not launched),
 3) scripts to spawn objects.
 
-Note: you can create additional tmux windows with `CTRL-b c`. You can detach from tmux
-with `CTRL-b d`
+Note: you can create additional tmux windows with `CTRL-b c`. You can detach from tmux with `CTRL-b d`
 
 
 
