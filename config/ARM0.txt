@@ -22,14 +22,19 @@ box2 cardboard_box  0.2200 0.3550 0.56  1.5708  -0.00  -0.25
 
 scale1 scale  0.56 0.3672 0.545  0.00  -0.00  -0.70
 
-pouch1 pouch  0.434 -0.033 0.64 0 0 0 
-pouch2 pouch  0.433 0.041 0.64 0 0 0 
-pouch3 pouch  0.521 -0.031 0.64 0 0 0 
-pouch4 pouch  0.522 0.042 0.64 0 0 0 
-pouch5 pouch  0.786 0.204 0.64 0 0 0.25 
-pouch6 pouch  0.766 0.284 0.64 0 0 0.3 
-pouch7 pouch  0.521 -0.131 0.64 0 0 1.0 
-pouch8 pouch  0.433 0.131 0.64 0 0 0.8 
+block1 redBlock  0.434 -0.033 0.64 0 0 0 
+block2 greenBlock  0.433 0.041 0.64 0 0 0 
+block3 blueBlock  0.521 -0.031 0.64 0 0 0 
+block4 purpleBlock  0.522 0.042 0.64 0 0 0 
+block5 redBlock  0.786 0.204 0.64 0 0 0.25 
+block6 greenBlock  0.766 0.284 0.64 0 0 0.3 
+block7 blueBlock  0.521 -0.131 0.64 0 0 1.0 
+block8 purpleBlock  0.433 0.131 0.64 0 0 0.8 
+block9 redBlock  -0.1809 -0.6900 0.56 0 0 0.95
+block10 greenBlock  -0.1809 -0.6900 0.585 0 0 0
+block11 blueBlock  -0.1809 -0.6900 0.605 0 0 0.95
+block12 purpleBlock  -0.1809 -0.6900 0.63 0 0 0  
+
 
 # Objects
 
@@ -38,7 +43,7 @@ gCan2 greenCan  0.2191 -0.0220 0.5548  1.57  -1.55  0.01
 gCan3 greenCan  -0.0809 -0.6600 0.5858  0.00  -0.00  -1.73
 gCan4 greenCan  0.3690 -0.5296 0.6768  0.00  -0.00  -2.99
 
-rCan1 redCan  0.295 0.5031 0.5857  3.14  -0.00  3.00
+rCan1 redCan  0.165 0.5031 0.5857  3.14  -0.00  3.00
 rCan2 redCan  -0.0809 -0.6600 0.740  3.14  -0.00  0.00
 rCan3 redCan  0.70 0.0322 0.5857  3.14  -0.00  0.66
 
@@ -58,6 +63,15 @@ yBottle1 yellowBottle  -0.1430 0.5264 0.5558  1.57  1.47  1.58
 yBottle2 yellowBottle  0.680 -0.1600 0.6093  0.00  -0.00  0.00
 yBottle3 yellowBottle  0.3064 0.1509 0.6339  0.00  0.00  -0.01
 yBottle4 yellowBottle  0.2430 -0.6251 0.7558  1.57  1.47  1.58
+
+marker1 040_large_marker -0.1230 0.6564 0.5558  1.57  1.47  1.58
+marker2 040_large_marker 0.3641 -0.0220 0.5248  0.00  0  0
+marker3 040_large_marker 0.24 -0.44 0.64  0.00  0  0.57 
+
+spam1 010_potted_meat_can 0.305 0.4911 0.5557  -0.003  -0.002  -0.158
+spam2 010_potted_meat_can 0.55 -0.3821 0.5918  1.57  1.47  1.58
+spam3 010_potted_meat_can 0.73 0.1722 0.5557 -0.003  -0.002  -1.158
+
 
 
 
