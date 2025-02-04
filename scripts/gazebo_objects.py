@@ -11,7 +11,7 @@ if __name__ == '__main__':
             print("-l\tlist objects")
             print("-m\tlist available models")
             print("-a <obj>  <type> <x> <y> <z> <yaw> <pitch> <roll>|<filename>\tadd an object or all objects in config file")
-            print("-d <obj>|<filename>\tdelete one object or all objects in config file")
+            print("-d <obj>|<filename>|all\tdelete one object or all objects in config file")
             print("-w\tworld properties")
             print("-s <obj>\tobject properties and state")
 
@@ -40,7 +40,9 @@ if __name__ == '__main__':
 
         elif sys.argv[1]=='-d' and len(sys.argv)>2:
             name = sys.argv[2]
-            if os.path.isfile(name):
+            if name=='all':
+                del_all_objects()
+            elif os.path.isfile(name):
                 del_objects(name)
             else:
                 delete_object(name)

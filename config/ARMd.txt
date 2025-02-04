@@ -9,4 +9,7 @@ rBottle*
 bBottle*
 yBottle*
 hammer*
+block*
+marker*
+spam*
 

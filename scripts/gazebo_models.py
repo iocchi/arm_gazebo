@@ -305,5 +305,12 @@ def del_objects(infile):
             l = f.readline()
         f.close()
 
+def del_all_objects():
+    l = list_object_names()
+    excluded = ['ground_plane','table1','table2','unit_box','BlueBin','GreenBin','robot']
+    for obj in l:
+        if obj not in excluded:
+            delete_object(obj)
+    
 
 
