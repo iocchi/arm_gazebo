@@ -94,7 +94,7 @@ In this script you can find the commands sent to the tmux server, in particular 
 
 Note: you can create additional tmux windows with `CTRL-b c`. You can detach from tmux with `CTRL-b d`
 
-
+If you need to restart the simulation, move to the first window of tmus (the one running gazebo), quit the simulation and other ROS nodes with 'CTRL-c' in this window, relaunch the simulator and all the ROS nodes (press the UP key to access the previous command and then ENTER).
 
 
 
@@ -108,11 +108,11 @@ Create a config file in `config` folder with objects described in this format
 
 Spawn objects from the docker container
 
-First enter the docker container
+First, enter the docker container
 
     docker exec -it armgazebo tmux a
 
-Then, issue the follwoing commands to manage objects in gazebo simulator
+Then, issue the following commands to manage objects in gazebo simulator
 
     cd ~/src/arm_gazebo/scripts
     python gazebo_objects.py -a <object config file>
@@ -144,7 +144,7 @@ For other interactions with gazebo objects, see a list of options with
     -l	list objects
     -m	list available models
     -a <obj> <type> <x> <y> <z> <yaw> <pitch> <roll>|<filename>	add an object or all objects in config file
-    -d <obj>|<filename>	delete one object or all objects in config file
+    -d <obj>|<filename>|all	   delete one object, all objects in config file, or all objects in the scene
     -w	world properties
     -s <obj>	object properties and state
 
