@@ -1,6 +1,6 @@
 # ARM Gazebo
 
-This package contains files for Gazebo simulation for RoboCup ARM challenge.
+This package contains the Gazebo simulation used in the [RoboCup ARM challenge](https://arm.robocup.org/).
 
 # Setup
 
