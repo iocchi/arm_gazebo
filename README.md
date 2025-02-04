@@ -48,14 +48,21 @@ Note: Skip this section if you downloaded the ARM Gazebo Virtual Machine.
 
 
 
-# Build
+# Build or pull the docker image
 
 Note: Skip this section if you downloaded the ARM Gazebo Virtual Machine.
 
-Build docker image
+To get the docker image you can either build it from the `Dockerfile` or pull it from `dockerhub'. 
+
+Option 1: Build docker image
 
     cd docker
     ./build.bash
+
+Option 2: Pull image
+
+    docker pull iocchi/arm_gazebo:latest
+
 
 # Run
 
