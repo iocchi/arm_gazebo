@@ -73,7 +73,7 @@ RUN /bin/bash -ci "cd $HOME/ros/catkin_ws; catkin_make"
 # libfranka
 RUN mkdir -p ~/lib/libfrankainstall/ && \
     cd ~/lib/libfrankainstall/ && \
-    git clone --recursive https://github.com/frankaemika/libfranka && \
+    git clone --branch 0.13.2 --recursive https://github.com/frankaemika/libfranka && \
     cd libfranka && \
     git submodule update && \ 
     mkdir build && \
