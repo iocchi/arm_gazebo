@@ -13,7 +13,7 @@ services:
       - "3000:80"
 
   gazebo:
-    image: arm_gazebo
+    image: ${DOCKER_IMAGE:-arm_gazebo}
     container_name: armgazebo
     tty: true
     ipc: host
