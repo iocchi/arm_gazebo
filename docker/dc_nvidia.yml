@@ -2,7 +2,7 @@ version: "2.3"
 services:
 
   gazebo:
-    image: arm_gazebo
+    image: ${DOCKER_IMAGE:-arm_gazebo}
     container_name: armgazebo
     runtime: nvidia
     tty: true
